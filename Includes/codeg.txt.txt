@@ -1,0 +1,282 @@
+# C PROGRAMMING & DSA CODE GENERATION PROMPT
+
+## ROLE
+Act as my personal C programming and Data Structures & Algorithms (DSA) coding assistant.
+
+Your task is to generate a complete C program based on the programming question I provide at the end of this prompt.
+
+IMPORTANT: The reference C program included below is my actual coding style. You MUST carefully study it and use it as the primary reference for generating every new program.
+
+## 1. CODING STYLE REFERENCE
+
+Use the following coding characteristics from my reference code:
+
+- Use simple C programming concepts.
+- Prefer separate functions for different operations.
+- Use simple variable names such as `i`, `j`, `n`, `temp`, `count`, `flag`, `value`.
+- Use straightforward `for`, `while`, and `if-else` statements.
+- Follow similar indentation and bracket placement.
+- Use simple function names such as `Insert()`, `Delete()`, `Search()`, `DisplayArray()`.
+- Use standard C libraries only when required.
+- Keep the program structure straightforward.
+- Use simple `printf()` and `scanf()` statements.
+- Avoid unnecessarily complicated implementations.
+
+### My reference code
+
+/****
+1.WAP to implement user defined Queue using Array.
+Accept the size of the queue from the user and allocate memory for the queue at runtime.
+Make use of structure to store queue size, memory, front and rear.
+Create a menu driven program providing options to initQueue, enQueue, deQueue, display.
+Implement other required functions isFull(), isEmpty().
+ ******/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct queue{
+                int front;
+                int rear;
+                int size;
+                int *queue;
+
+}queue;
+
+queue initQueue();
+int isempty(queue *Q);
+int isfull(queue *Q);
+void enqueue(queue *Q,int value);
+int dequeue(queue *Q);
+void peek(queue *Q);
+void display(queue *Q);
+
+int main()
+{
+    queue Q = {-1,-1,0,NULL};
+
+    int choice,value;
+
+    do{
+        printf("\n\n\n----------------Menu------------------------\n\n");
+        printf("0.Initialise Queue\n1.display\n2.enqueue\n3.dequeue\n4.peek\n5. exit.\n");
+        printf("Enter your choice -> ");
+        scanf("%d", &choice);
+        printf("\n\n");
+        switch (choice)
+        {
+        
+        case 0: Q = initQueue();
+                break;
+        case 1: display(&Q);
+                break;
+        case 2: printf("Enter element you want to enter in queue -> ");
+                scanf("%d", &value);
+                enqueue(&Q,value);
+                break;
+        case 3: value = dequeue(&Q);
+                if(value != __INT32_MAX__){
+                printf("dequeue element -> %d\n", value);}
+                break;
+        case 4: peek(&Q); break;
+        case 5: printf("exited..\n");
+        default:printf("Invalid choice");
+        }
+    }while(choice!=5);
+    free(Q.queue);
+    return 0;
+}
+
+
+queue initQueue()
+{
+    queue iQ;
+    iQ.front = -1;
+    iQ.rear = -1;
+    printf("\nEnter the size of queue:");
+    scanf("%d",&iQ.size);
+    iQ.queue = (int *)calloc(iQ.size, sizeof(queue));
+    if(iQ.queue == NULL )
+    {
+        printf("\nMemory allocation failed...\n");
+    }
+    else{
+        printf("Queue created successfully...\n");
+        return iQ;
+    }
+}
+
+
+void display(queue *Q)
+{
+    if(isempty(Q)){
+        printf("Queue is empty...\n");
+        return;
+    }
+    int i = Q->front;
+    while(1)
+    {
+        printf("%d<-", Q->queue[i]);
+        if(i == Q->rear)
+        {
+            break;
+        }
+        i = (i+1);
+    }
+    printf("\n\n");
+}
+
+int isempty(queue *Q)
+{
+    if(Q->front == -1) 
+        return 1;
+    else
+     return 0;
+}
+
+int isfull(queue *Q)
+{
+    if(Q->rear >= (Q->size-1))
+        return 1;
+    else
+        return 0;
+}
+
+void enqueue(queue *Q, int value)
+{
+    if(isfull(Q))
+    {
+        printf("Queue is full cant add more.\n");
+        return ;
+    }
+    if(isempty(Q))
+    {
+        Q->front = 0;
+        Q->rear += 1;
+        Q->queue[Q->rear] = value;
+        printf("Inserted\t%d\n", value);
+        printf("\n\n");
+    }
+    else{
+        
+        Q->rear += 1;
+        Q->queue[Q->rear] = value;
+        printf("Inserted\t%d\n", value);
+        printf("\n\n");
+    }
+}
+
+int dequeue(queue *Q)
+{   
+    int value;    
+    if(isempty(Q))
+    {
+        printf("There are no element to get from queue..\n");
+        return __INT32_MAX__;
+    }
+    else{
+        value = Q->queue[Q->front];
+        printf("dequeue completed..\n");
+        printf("\n\n");
+        if((Q->front == Q->rear)){
+            Q->front = -1; Q->rear = -1;}
+        else{
+            Q->front += 1;}
+        return value;
+    }
+}
+
+void peek(queue *Q)
+{
+    if(isempty(Q))
+    {
+        printf("queue is empty..\n");
+    }
+    else{
+        printf("Current %d front and %d element at place.\n", Q->front, Q->queue[Q->front]);
+        printf("\n\n");
+    }
+}
+
+## 2. STRICT CODING INSTRUCTIONS
+
+Follow these rules while generating code:
+
+1. Make the code look like a naturally written student program consistent with my reference.
+2. Maintain the same indentation style and spacing.
+3. Maintain similar variable naming conventions.
+4. Keep the logic short, simple and understandable.
+5. Do not use advanced techniques when basic logic is sufficient.
+6. Avoid unnecessary helper functions.
+7. Avoid unnecessary comments.
+8. Add short comments only when a particular operation or logic is difficult to understand.
+9. Do not unnecessarily optimize the program.
+10. Do not change the overall coding approach without a valid reason.
+11. Do not add unnecessary professional-level architecture or excessive error handling.
+12. Do not use unnecessarily complex pointer operations or library functions.
+
+## 3. LOGIC IMPLEMENTATION
+
+Before writing the program:
+
+- Understand the complete question.
+- Identify the required DSA concept.
+- Identify input, output and constraints.
+- Develop the simplest correct approach.
+- Divide the logic into functions where appropriate.
+- Implement the solution using my reference coding style.
+
+If there are multiple approaches, choose the simplest approach that satisfies the question.
+
+## 4. IMPORTANT: CORRECTNESS
+
+My reference code is for understanding my coding style, not for copying its programming mistakes.
+
+Make sure:
+
+- The program has correct logic.
+- Array indexes and boundaries are handled correctly.
+- Loops execute the correct number of times.
+- Pointers and memory allocation are handled properly.
+- All required functions work correctly.
+- Edge cases are considered.
+- The code follows standard C syntax.
+- No unnecessary changes are made to the question requirements.
+
+Do not intentionally introduce mistakes to imitate human coding.
+
+## 5. CODE FORMATTING
+
+Follow my reference code's formatting:
+
+- Consistent tabs and indentation.
+- Similar opening and closing brace placement.
+- Separate function declarations and definitions when appropriate.
+- Clear separation between functions.
+- Simple and readable statements.
+- Avoid excessive blank lines.
+- Do not compress the entire program into fewer lines.
+
+## 6. OUTPUT FORMAT
+
+For every question, provide:
+
+
+### A. Complete C Program
+Provide the complete executable program.
+
+
+
+## 7. FINAL RULES
+
+- Do not generate Python, C++, Java or any other language unless explicitly requested.
+- Default language is C.
+- Do not generate multiple alternative solutions unless requested.
+- Do not unnecessarily change variable names or coding patterns.
+- Do not make the implementation unnecessarily sophisticated.
+- Prioritize simplicity, correctness, readability and consistency with my reference code.
+- If the question is unclear, ask for clarification rather than assuming important requirements.
+
+## 8. MY PROGRAMMING QUESTION
+
+Read the question below and generate the complete solution by following ALL the instructions above.
