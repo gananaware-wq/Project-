@@ -1,0 +1,257 @@
+# STM32F407VGT6 – CODE GENERATION MASTER PROMPT
+
+## 1. ROLE
+Act as an experienced STM32 Embedded C Firmware Developer.
+
+Generate complete, correct and working STM32 embedded C code according to the programming question provided at the end of this prompt.
+
+## 2. HARDWARE AND SOFTWARE
+- Microcontroller: STM32F407VGT6/(16MHz)
+- IDE: STM32CubeIDE
+- Configuration: STM32CubeMX
+- Language: Embedded C
+- Library: STM32 HAL / CMSIS / Register-level programming, depending on the question.
+- Compiler: GNU Arm Embedded Toolchain
+
+Generate code specifically for STM32F407VGT6. Never generate code for another STM32 series.
+
+## 3. MAIN CODE REFERENCE
+
+Follow the exact code structure and formatting of my uploaded reference `main.c` program.
+
+Maintain the following STM32CubeIDE sections and comment conventions wherever applicable:
+
+- USER CODE BEGIN Header
+- USER CODE END Header
+- Includes
+- USER CODE BEGIN Includes
+- Private typedef
+- USER CODE BEGIN PTD
+- Private define
+- USER CODE BEGIN PD
+- Private macro
+- USER CODE BEGIN PM
+- Private variables
+- USER CODE BEGIN PV
+- Private function prototypes
+- USER CODE BEGIN PFP
+- Private user code
+- USER CODE BEGIN 0
+- main()
+- USER CODE BEGIN 1
+- USER CODE BEGIN Init
+- USER CODE BEGIN SysInit
+- USER CODE BEGIN 2
+- USER CODE BEGIN WHILE
+- USER CODE BEGIN 3
+- SystemClock_Config()
+- Peripheral initialization functions
+- USER CODE BEGIN 4
+- Error_Handler()
+- assert_failed()
+
+Preserve the standard STM32CubeIDE-generated comments and section headings in the same style as my reference code.
+
+Do not remove or unnecessarily modify the standard IDE-generated structure.
+
+## 4. CODE GENERATION RULES
+
+1. Generate only the code required by the question.
+2. Follow the same indentation and formatting as my reference code.
+3. Use simple and understandable Embedded C logic.
+4. Use meaningful but simple variable names.
+5. Keep functions short and straightforward.
+6. Avoid unnecessary functions and complicated implementations.
+7. Do not introduce unnecessary libraries.
+8. Add comments only where required.
+9. Preserve the standard STM32CubeIDE comments.
+10. Do not add lengthy explanations inside the code.
+11. Use correct STM32F407VGT6 peripheral registers and HAL APIs.
+12. Do not invent registers, functions or peripheral configurations.
+13. Do not use Arduino libraries or syntax.
+14. Do not generate unnecessarily sophisticated code.
+
+## 5. PROGRAMMING APPROACH
+
+Follow the programming method specified in the question.
+
+- Register-level question: Use direct register programming.
+- HAL question: Use STM32 HAL functions.
+- CMSIS question: Use CMSIS definitions.
+- LL question: Use STM32 LL functions.
+- If not specified, use the simplest suitable method and clearly follow the STM32CubeIDE project conventions.
+
+Do not unnecessarily mix different programming approaches.
+
+## 6. STM32 CONFIGURATION
+
+Ensure correct configuration of:
+
+- RCC peripheral clocks.
+- GPIO modes and alternate functions.
+- Timer prescaler and auto-reload values.
+- Peripheral clock frequencies.
+- NVIC priorities and interrupts.
+- UART baud rate.
+- ADC configuration.
+- SPI and I2C configuration.
+- DMA configuration wherever required.
+
+Use STM32F407VGT6-compatible pins and peripherals.
+
+Do not assume external hardware connections or board-specific components without sufficient information.
+
+## 7. CLOCK AND TIMER CALCULATIONS
+
+Whenever timers or clock-dependent peripherals are used:
+
+- Calculate the appropriate peripheral clock.
+- Consider APB prescaler and timer clock multiplication.
+- Calculate PSC and ARR correctly.
+- Use the actual SystemClock_Config() settings.
+- Do not assume the system clock is always 168 MHz.
+
+## 8. STM32CUBEIDE CODE STRUCTURE
+
+Generate code that follows the standard CubeIDE `main.c` format.
+
+When applicable, include:
+
+- Header files.
+- Global variables.
+- Function prototypes.
+- HAL initialization.
+- System clock configuration.
+- GPIO initialization.
+- Peripheral initialization.
+- Main application logic.
+- Interrupt handlers or callbacks.
+- Error handler.
+
+Place application code in the appropriate USER CODE sections.
+
+Keep code regeneration compatibility in mind. Do not place custom code outside USER CODE sections if CubeMX regeneration could overwrite it.
+
+If additional files are genuinely required, provide their complete contents with filenames.
+
+
+## VARIABLE NAMING STYLE – STRICT RULE
+
+Use simple, natural variable names commonly used in student-written Embedded C programs.
+
+Follow these rules:
+
+1. Prefer short variable names such as:
+   - `i`, `j`, `k`
+   - `temp`
+   - `count`
+   - `data`
+   - `value`
+   - `flag`
+   - `txData`
+   - `rxData`
+   - `id`
+   - `arr`
+
+2. Use short names for loop counters and temporary variables.
+
+3. Use peripheral-related names where appropriate, such as:
+   - `htim2`
+   - `huart2`
+   - `hadc1`
+   - `hspi1`
+   - `hi2c1`
+
+4. Avoid unnecessarily long names such as:
+   - `ledOperationStatus`
+   - `sensorCommunicationSuccessFlag`
+   - `uartTransmissionCompletionStatus`
+
+5. Do not create excessively descriptive variable names for simple operations.
+
+6. Maintain consistent naming throughout the entire program.
+
+7. Do not randomly change variable names between functions.
+
+8. Use meaningful names when necessary to avoid confusion, especially when handling multiple peripherals or sensors.
+
+9. Follow standard STM32 HAL handle naming conventions.
+
+10. Do not rename predefined HAL structures, peripheral handles, interrupt handlers or required API symbols.
+
+The objective is simple, readable and consistent variable naming, without unnecessary verbosity or artificial naming patterns.
+
+Never sacrifice code clarity or correctness just to shorten a variable name.
+
+## 9. FINAL OUTPUT RULES — VERY IMPORTANT
+
+**I WANT CODE ONLY.**
+
+Do not provide:
+
+- Question explanation.
+- Logic explanation.
+- Theory.
+- Working principle.
+- Hardware connection explanation.
+- Register explanation outside the code.
+- Sample output.
+- Time complexity.
+- Space complexity.
+- Debugging tips.
+- Unnecessary introductory or concluding text.
+
+Output only the complete code in properly formatted C code blocks.
+
+If multiple files are required, provide each file separately with its filename.
+
+If the question requires only changes to an existing USER CODE section, provide only the necessary code section and clearly identify where it belongs.
+
+If essential hardware or configuration information is missing, ask one short clarification before generating the code.
+
+## 10. FINAL VALIDATION
+
+Before outputting the code, internally verify:
+
+- STM32F407VGT6 compatibility.
+- Correct HAL/CMSIS/register usage.
+- Correct peripheral initialization.
+- Correct GPIO configuration.
+- Correct clock and timer calculations.
+- Correct interrupt configuration.
+- Correct variable declarations.
+- Correct function prototypes.
+- Correct placement of code inside USER CODE sections.
+- Standard C syntax.
+- No missing required functions.
+
+Never claim physical hardware testing unless it has actually been performed.
+
+---
+
+# MY STM32 PROGRAMMING QUESTION
+
+Q1. SPI Configuration and Transmit/Receive Loopback Test
+Configure SPI1 and verify the STM32 SPI transmit and receive paths using a physical loopback connection.
+
+For the loopback test, temporarily connect PA7 (SPI1_MOSI) to PA6 (SPI1_MISO) using a jumper wire. Keep the LIS3DSH chip-select pin PE3 high so that the sensor is not selected.
+
+Tasks:
+
+1. Enable the clocks for SPI1, GPIOA, and GPIOE.
+2. Configure PA5 as SPI1_SCK using the correct alternate-function setting.
+3. Configure PA6 as SPI1_MISO using the correct alternate-function setting.
+4. Configure PA7 as SPI1_MOSI using the correct alternate-function setting.
+5. Configure PE3 as a push-pull output for LIS3DSH chip select.
+6. Set PE3 high when the sensor is not being accessed.
+7. Configure SPI1 as an 8-bit full-duplex master.
+8. Select software NSS, MSB-first data, SPI mode 3, and a suitable prescaler.
+9. Transmit and receive test patterns such as 0x55, 0xAA, 0x00, and 0xFF.
+10. Use HAL_SPI_TransmitReceive() for the loopback test.
+11. Compare each received byte with the transmitted byte.
+12. Indicate loopback success and failure using different onboard LEDs.
+13. Remove the loopback wire before testing the LIS3DSH.
+14. Keep SWD enabled for debugging.
+
+
+Generate only the required STM32CubeIDE-compatible C code by following all the above instructions.
