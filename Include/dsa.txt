@@ -1,6 +1,6 @@
 # C PROGRAMMING & DSA CODE GENERATION PROMPT
 
-## ROLE
+### ROLE
 Act as my personal C programming and Data Structures & Algorithms (DSA) coding assistant.
 
 Your task is to generate a complete C program based on the programming question I provide at the end of this prompt.
